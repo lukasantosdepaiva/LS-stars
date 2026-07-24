@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #2563eb #020617;
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb, #facc15);
+  border: 2px solid #020617;
+  border-radius: 999px;
+}
+
+::selection {
+  background: rgba(250, 204, 21, 0.35);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(250, 204, 21, 0.75);
+  outline-offset: 3px;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+  will-change: transform;
+}
+
+.tilt-card > * {
+  transform: translateZ(18px);
+}
+
+.hero-particle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.8);
+  box-shadow: 0 0 28px rgba(37, 99, 235, 0.75);
+  animation: particle-float 11s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 0.25;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(18px, -34px, 0) scale(1.25);
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+}
+
+.image-zoom-blur {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.image-zoom-blur img {
+  transition:
+    transform 500ms ease,
+    filter 500ms ease;
+}
+
+.image-zoom-blur:hover img {
+  filter: blur(1px) saturate(1.18);
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-particle,
+  .tilt-card,
+  .image-zoom-blur img {
+    animation: none;
+    transition: none;
+  }
+}
